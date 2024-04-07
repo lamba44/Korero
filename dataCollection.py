@@ -4,11 +4,11 @@ import numpy as np
 import math
 import time
 
-offset = 20
+offset = 30
 imgSize = 300
 counter = 0
 
-folder = "Data/B"
+folder = "Data/Y"
 
 cap = cv2.VideoCapture(0)  # Index of Camera being used
 
@@ -24,7 +24,7 @@ while True:
             x, y, w, h = hand["bbox"]  # get value of bounding box dimensions
 
             imgWhite = np.ones((imgSize, imgSize, 3), np.uint8) * 255
-            imgCrop = img[y - offset : y + h, x - offset : x + w]  # cropped image size
+            imgCrop = img[y - offset : y + h + 25, x - offset : x + w + 25]  # cropped image size
 
             imgCropShape = imgCrop.shape
 
