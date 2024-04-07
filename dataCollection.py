@@ -24,9 +24,7 @@ while True:
             x, y, w, h = hand["bbox"]  # get value of bounding box dimensions
 
             imgWhite = np.ones((imgSize, imgSize, 3), np.uint8) * 255
-            imgCrop = img[
-                y - offset : y + h, x - offset : x + w + 25
-            ]  # cropped image size
+            imgCrop = img[y - offset : y + h, x - offset : x + w]  # cropped image size
 
             imgCropShape = imgCrop.shape
 
