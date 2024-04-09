@@ -44,6 +44,8 @@ labels = [
     "Y",
 ]
 
+min_confidence = 0.5  # Minimum confidence level for prediction
+
 while True:
     success, img = cap.read()  # Capturing the footage
     imgOutput = img.copy()
@@ -84,33 +86,36 @@ while True:
 
                 prediction, index = classifier.getPrediction(imgWhite, draw=False)
 
-            cv2.rectangle(
-                imgOutput,
-                (x - offset, y - offset - 50),
-                (x - offset + 100, y - offset),
-                (255, 0, 255),
-                cv2.FILLED,
-            )
+            confidence = prediction[index]  # Confidence value of the prediction
 
-            cv2.putText(
-                imgOutput,
-                labels[index],
-                (x, y - 25),
-                cv2.FONT_HERSHEY_COMPLEX,
-                1.75,
-                (255, 255, 255),
-                3,
-            )
+            if confidence >= min_confidence:
+                cv2.rectangle(
+                    imgOutput,
+                    (x - offset, y - offset - 50),
+                    (x - offset + 200, y - offset),
+                    (255, 0, 255),
+                    cv2.FILLED,
+                )
 
-            cv2.rectangle(
-                imgOutput,
-                (x - offset, y - offset),
-                (x + w + offset, y + h + offset),
-                (255, 0, 255),
-                4,
-            )
-            cv2.imshow("Image Crop", imgCrop)
-            cv2.imshow("Image White", imgWhite)
+                cv2.putText(
+                    imgOutput,
+                    f"{labels[index]}: {confidence:.2f}",
+                    (x, y - 25),
+                    cv2.FONT_HERSHEY_COMPLEX,
+                    1.75,
+                    (255, 255, 255),
+                    3,
+                )
+
+                cv2.rectangle(
+                    imgOutput,
+                    (x - offset, y - offset),
+                    (x + w + offset, y + h + offset),
+                    (255, 0, 255),
+                    4,
+                )
+                cv2.imshow("Image Crop", imgCrop)
+                cv2.imshow("Image White", imgWhite)
         else:
             cv2.imshow("Image Crop", imgCrop)  # Show the previous image crop
             cv2.imshow("Image White", imgWhite)  # Show the previous image white
