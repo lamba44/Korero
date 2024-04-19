@@ -9,7 +9,7 @@ imgSize = 300
 counter = 0
 
 
-folder = "Data/Y"
+folder = "Data/Test"
 
 
 cap = cv2.VideoCapture(0)  # Index of Camera being used
