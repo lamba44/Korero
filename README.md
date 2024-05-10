@@ -11,6 +11,6 @@ Korero is an advanced AI-driven software solution designed to translate sign lan
 - Model development through Google's Teachable platform
 
 **Contact:**
-For inquiries or further information, please reach out to us at:
-sakshamlambamonu@gmail.com
+For inquiries or further information, please reach out to us at: <br>
+sakshamlambamonu@gmail.com <br>
 eshaan.gupta.33@gmail.com
